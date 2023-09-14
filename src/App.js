@@ -1,43 +1,25 @@
 import React from "react";
-import { Link, Switch, Route } from 'react-router-dom';
-
-function Homepage() {
-  return (
-    <div>
-      <h1>Welcome to My Pizza Shop!</h1>
-      <Link id="order-pizza" to="/form">Order Pizza</Link> {/* Link to the form with id "order-pizza" */}
-    </div>
-  );
-}
-
-function Form() {
-  return (
-    <div>
-      <h2>Order Pizza Form</h2>
-      <form id="pizza-form">
-        <input type="text" id="name-input" />
-        {/*  */}
-      </form>
-    </div>
-  );
-}
-
-function OrderForm() {
-  return (
-    <div>
-      <h2>Pizza Order Form</h2>
-      {/*  */}
-    </div>
-  );
-}
+import { Routes, Route } from 'react-router-dom';
+import Homepage from "./pages/Home";
+import Form from './pages/Form';
+import OrderForm from './pages/OrderForm'
+import Header from './pages/Header';
+import Help from './pages/Help';
+import Success from "./pages/Success";
+import './App.css'
 
 const App = () => {
   return (
-    <Switch>
-      <Route exact path="/" component={Homepage} /> 
-      <Route path="/form" component={Form} /> 
-      <Route path="/pizza" component={OrderForm} /> 
-    </Switch>
+    <div className="App">
+      <Header />
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/form" element={<Form />} />
+        <Route path="/pizza" element={<OrderForm />} />
+        <Route path="/help" element={<Help />} />
+        <Route path="/success" element={<Success />} />
+      </Routes>
+    </div>
   );
 };
 export default App;
